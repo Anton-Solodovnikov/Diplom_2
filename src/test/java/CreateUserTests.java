@@ -29,6 +29,53 @@ public class CreateUserTests {
         steps.registerUser(createBody);
         steps.checkStatusCode(200);
         steps.checkResponseBody("success", true);
+        steps.checkResponseBody("user.email", email.toLowerCase());
+        steps.checkResponseBody("user.name", name);
+        steps.checkResponseBody("accessToken");
+        steps.checkResponseBody("refreshToken");
         tokens.add(steps.getToken());
     }
+    @Test
+    @DisplayName("Создание пользователя, который уже существует")
+    public void createExistUserTest() {
+        steps.registerUser(createBody);
+        steps.checkStatusCode(200);
+        steps.registerUser(createBody);
+        steps.checkStatusCode(403);
+        steps.checkResponseBody("success", false);
+        steps.checkResponseBody("message", "User already exists");
+    }
+    @Test
+    @DisplayName("Создание пользователя без всех обязательных полей")
+    public void createUserWithNoRequiredFields() {
+        steps.registerUser(new UserRequest("","",""));
+        steps.checkStatusCode(403);
+        steps.checkResponseBody("success", false);
+        steps.checkResponseBody("message", "Email, password and name are required fields");
+    }
+    @Test
+    @DisplayName("Создание пользователя без email")
+    public void createUserWithNoEmailField() {
+        steps.registerUser(new UserRequest("",password,name));
+        steps.checkStatusCode(403);
+        steps.checkResponseBody("success", false);
+        steps.checkResponseBody("message", "Email, password and name are required fields");
+    }
+    @Test
+    @DisplayName("Создание пользователя без password")
+    public void createUserWithNoPasswordField() {
+        steps.registerUser(new UserRequest(email,"",name));
+        steps.checkStatusCode(403);
+        steps.checkResponseBody("success", false);
+        steps.checkResponseBody("message", "Email, password and name are required fields");
+    }
+    @Test
+    @DisplayName("Создание пользователя без name")
+    public void createUserWithNoNameField() {
+        steps.registerUser(new UserRequest(email,password,""));
+        steps.checkStatusCode(403);
+        steps.checkResponseBody("success", false);
+        steps.checkResponseBody("message", "Email, password and name are required fields");
+    }
+
 }

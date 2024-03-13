@@ -22,7 +22,7 @@ public abstract class BaseHttpClient {
         return new RequestSpecBuilder()
                 .setBaseUri("https://stellarburgers.nomoreparties.site")
                 .addHeader("Content-Type","application/json")
-                .addHeader("Authorization", token)
+                .addHeader("Authorization", "Bearer " + token)
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .addFilter(new ErrorLoggingFilter())

@@ -6,11 +6,9 @@ public class UserRequest {
     private String name;
     private String token;
 
-    public UserRequest(String email, String password, String name, String token) {
+    public UserRequest(String email, String password) {
         this.email = email;
         this.password = password;
-        this.name = name;
-        this.token = token;
     }
 
     public UserRequest(String email, String password, String name) {
