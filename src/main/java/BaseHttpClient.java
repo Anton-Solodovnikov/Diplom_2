@@ -50,6 +50,13 @@ public abstract class BaseHttpClient {
                 .post(path)
                 .thenReturn();
     }
+    protected Response doPostRequest(String path, Object body, String token) {
+        return given()
+                .spec(baseRequestSpec(token))
+                .body(body)
+                .post(path)
+                .thenReturn();
+    }
 
     protected Response doDeleteRequest(String path, String token) {
         return given()

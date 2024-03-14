@@ -14,6 +14,9 @@ public class UserResponse {
         this.refreshToken = refreshToken;
     }
 
+    public UserResponse() {
+    }
+
     public String getSuccess() {
         return success;
     }

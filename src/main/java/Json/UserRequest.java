@@ -17,6 +17,9 @@ public class UserRequest {
         this.name = name;
     }
 
+    public UserRequest() {
+    }
+
     public String getEmail() {
         return email;
     }
