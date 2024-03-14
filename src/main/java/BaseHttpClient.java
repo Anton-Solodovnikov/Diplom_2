@@ -65,14 +65,6 @@ public abstract class BaseHttpClient {
                 .thenReturn();
     }
 
-    protected Response doPutRequest(String path, Object body) {
-        return given()
-                .spec(baseRequestSpec())
-                .body(body)
-                .put(path)
-                .thenReturn();
-    }
-
     protected Response doPatchRequest(String path, Object body, String token) {
         return given()
                 .spec(baseRequestSpec(token))
