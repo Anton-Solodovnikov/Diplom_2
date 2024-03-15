@@ -27,7 +27,7 @@ public class UpdateUserTests {
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
-            steps.deleteUser(token, createBody);
+            steps.deleteUser(token);
         }
     }
     @Test

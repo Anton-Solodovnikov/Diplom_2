@@ -34,7 +34,7 @@ public class OrdersTests {
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
-            userSteps.deleteUser(token, createBody);
+            userSteps.deleteUser(token);
         }
     }
     @Test

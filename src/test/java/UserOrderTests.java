@@ -40,7 +40,7 @@ public class UserOrderTests {
         if(tokens.isEmpty())
             return;
         for (String token: tokens) {
-            userSteps.deleteUser(token, createBody);
+            userSteps.deleteUser(token);
         }
     }
     @Test

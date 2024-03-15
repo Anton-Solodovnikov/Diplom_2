@@ -30,9 +30,8 @@ public class UserSteps {
                 .body(jsonField,notNullValue());
     }
     @Step("Удаление пользователя")
-    public void deleteUser(String token, UserRequest userRequest) {
-        Response deleteResponse = authApi.login(userRequest);
-        userApi.deleteUser(deleteResponse.body().as(UserResponse.class).getAccessToken().split(" ")[1]);
+    public void deleteUser(String token) {
+        userApi.deleteUser(token);
     }
     @Step("Взять токен из ответа")
     public String getToken() {
