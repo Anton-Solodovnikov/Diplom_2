@@ -1,7 +1,6 @@
 import Json.UserRequest;
 import Json.UserResponse;
 import io.qameta.allure.Step;
-import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -46,9 +45,4 @@ public class UserSteps {
     public void updateUser(UserRequest userRequest, String token){
         response = userApi.patchUser(userRequest,token).then();
     }
-    @Step("Получить данные пользователя")
-    public void getUser(String token) {
-        response = userApi.getUser(token).then();
-    }
-
 }

@@ -5,7 +5,6 @@ import io.restassured.response.ValidatableResponse;
 
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
 
 public class OrderSteps {
     private IngredientsApi ingredientsApi = new IngredientsApi();
